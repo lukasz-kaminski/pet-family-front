@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Pet} from "../shared/models/pet.model";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'pet-add-form',
@@ -20,7 +21,7 @@ export class PetAddComponent implements OnInit {
   }
 
   submit() {
-    this.httpClient.post<Pet>("http://localhost:8080/pets", this.model)
+    this.httpClient.post<Pet>(environment.backendUrl + '/pets', this.model)
       .subscribe((response: Pet) => {
         this.router.navigate(['/pets'])
       });
