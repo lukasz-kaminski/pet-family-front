@@ -13,7 +13,7 @@ export class PetService {
   constructor(private httpClient: HttpClient) { }
 
   getById(id: number): Observable<Pet> {
-    return this.httpClient.get<Pet>('http://localhost:8080/pets/' + id, {headers: contentHeaders})
+    return this.httpClient.get<Pet>(environment.backendUrl + '/pets/' + id, {headers: contentHeaders})
   }
 
   getAll(): Observable<[Pet]> {
