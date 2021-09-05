@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Pet} from "../shared/models/pet.model";
-import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {environment} from "../../environments/environment";
+import {PetService} from "../pet.service";
 
 @Component({
   selector: 'pet-add-form',
@@ -15,14 +14,13 @@ export class PetAddComponent implements OnInit {
 
   model = new Pet(0, "", "", this.kinds[0])
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private petService: PetService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   submit() {
-    this.httpClient.post<Pet>(environment.backendUrl + '/pets', this.model)
-      .subscribe((response: Pet) => {
+    this.petService.create(this.model).subscribe(() => {
         this.router.navigate(['/pets'])
       });
   }

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {Pet} from "../shared/models/pet.model";
+import {PetService} from "../pet.service";
 
 @Component({
   selector: 'app-pet',
@@ -10,21 +10,17 @@ import {Pet} from "../shared/models/pet.model";
 })
 export class PetComponent implements OnInit, OnDestroy {
 
-  id:any;
-  pet:any;
+  pet?:Pet;
   sub:any;
 
-  constructor(private http : HttpClient, private route: ActivatedRoute) { }
+  constructor(private petService: PetService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
+      let id = +params['id']; // (+) converts string 'id' to a number
 
-      this.http.get<Pet>('http://localhost:8080/pets/' + this.id)
-        .subscribe((response: Pet) => {
-
-          console.log(response);
-          this.pet = response;
+      this.petService.getById(id).subscribe((pet: Pet) => {
+          this.pet = pet;
         });
     });
   }

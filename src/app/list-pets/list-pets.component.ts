@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Pet} from "../shared/models/pet.model";
-import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {PetService} from "../pet.service";
 
 @Component({
   selector: 'app-list-pets',
@@ -12,11 +12,10 @@ export class ListPetsComponent implements OnInit {
 
   pets?:[Pet]
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private petService: PetService) { }
 
   ngOnInit(): void {
-    this.httpClient.get<[Pet]>(environment.backendUrl + '/pets')
-      .subscribe((pets:[Pet]) => {
+    this.petService.getAll().subscribe((pets:[Pet]) => {
         this.pets = pets;
       })
   }
