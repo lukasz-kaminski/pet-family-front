@@ -3,11 +3,11 @@
   <input type="text" class="form-control" id="name"
          required
          [(ngModel)]="model.name" name="name">
-  <label for="name">Race</label>
-  <input type="text" class="form-control" id="race"
+  <label for="breed">Breed</label>
+  <input type="text" class="form-control" id="breed"
          required
-         [(ngModel)]="model.race" name="race">
-  <label for="kind">Animal kind</label>
+         [(ngModel)]="model.breed" name="breed">
+  <label for="kind">Kind</label>
   <select class="form-control" id="kind" [(ngModel)]="model.kind" required>
     <option *ngFor="let kind of kinds" [value]="kind">{{kind}}</option>
   </select>
