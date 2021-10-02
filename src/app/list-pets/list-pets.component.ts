@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Pet} from "../shared/models/pet.model";
-import {environment} from "../../environments/environment";
 import {PetService} from "../pet.service";
 
 @Component({
@@ -19,5 +18,4 @@ export class ListPetsComponent implements OnInit {
         this.pets = pets;
       })
   }
-
 }

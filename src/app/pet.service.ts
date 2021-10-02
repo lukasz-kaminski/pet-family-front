@@ -5,9 +5,7 @@ import {environment} from "../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {contentHeaders} from "./http-config";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class PetService {
 
   constructor(private httpClient: HttpClient) { }

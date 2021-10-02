@@ -16,7 +16,8 @@ export const routerConfig: Routes = [
   {
     path: 'pets/:id',
     component: PetComponent
-  },  {
+  },
+  {
     path: 'pets',
     component: ListPetsComponent
   },

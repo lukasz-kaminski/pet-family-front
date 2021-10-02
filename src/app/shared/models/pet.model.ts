@@ -3,6 +3,8 @@ export class Pet {
   name: string;
   breed: string;
   kind: string;
+  image: any;
+  imagePath:any;
 
   constructor(id: number, name: string, breed: string, kind: string) {
     this.id = id;

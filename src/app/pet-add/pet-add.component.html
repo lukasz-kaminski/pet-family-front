@@ -7,6 +7,9 @@
   <input type="text" class="form-control" id="breed"
          required
          [(ngModel)]="model.breed" name="breed">
+  <label for="image">Image</label>
+  <input type="file" class="form-control" id="image" [(ngModel)]="model.imagePath" (change)="handleUpload($event)">
+  <img *ngIf="model.image" src="{{model.image}}" class="img-fluid">
   <label for="kind">Kind</label>
   <select class="form-control" id="kind" [(ngModel)]="model.kind" required>
     <option *ngFor="let kind of kinds" [value]="kind">{{kind}}</option>
