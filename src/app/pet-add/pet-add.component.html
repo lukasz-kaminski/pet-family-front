@@ -2,17 +2,17 @@
   <label for="name">Name</label>
   <input type="text" class="form-control" id="name"
          required
-         [(ngModel)]="model.name" name="name">
+         [(ngModel)]="pet.name" name="name">
   <label for="breed">Breed</label>
   <input type="text" class="form-control" id="breed"
          required
-         [(ngModel)]="model.breed" name="breed">
+         [(ngModel)]="pet.breed" name="breed">
   <label for="image">Image</label>
-  <input type="file" class="form-control" id="image" [(ngModel)]="model.imagePath" (change)="handleUpload($event)">
-  <img *ngIf="model.image" src="{{model.image}}" class="img-fluid">
+  <input type="file" class="form-control" id="image" (change)="handleUpload($event)">
+  <img *ngIf="pet.image" src="{{pet.image}}" class="img-fluid">
   <label for="kind">Kind</label>
-  <select class="form-control" id="kind" [(ngModel)]="model.kind" required>
-    <option *ngFor="let kind of kinds" [value]="kind">{{kind}}</option>
+  <select class="form-control" id="kind" [(ngModel)]="pet.kind" required>
+    <option *ngFor="let kind of kinds" [value]="kind.enumValue">{{kind.niceName}}</option>
   </select>
   <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
 </div>

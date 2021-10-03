@@ -10,9 +10,18 @@ import {PetService} from "../pet.service";
 })
 export class PetAddComponent implements OnInit {
 
-  kinds = ['DOG', 'CAT']
+  kinds = [
+    {
+      enumValue: 'DOG',
+      niceName: 'dog'
+    },
+    {
+      enumValue: 'CAT',
+      niceName: 'cat'
+    }
+  ]
 
-  model = new Pet(0, "", "", this.kinds[0])
+  pet = new Pet(0, "", "", this.kinds[0].enumValue)
 
   constructor(private petService: PetService, private router: Router) { }
 
@@ -20,7 +29,7 @@ export class PetAddComponent implements OnInit {
   }
 
   submit() {
-    this.petService.create(this.model).subscribe(() => {
+    this.petService.create(this.pet).subscribe(() => {
         this.router.navigate(['/pets'])
       });
   }
@@ -30,7 +39,7 @@ export class PetAddComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.model.image = reader.result;
+      this.pet.image = reader.result;
     };
   }
 }

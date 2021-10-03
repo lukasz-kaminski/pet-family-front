@@ -12,4 +12,5 @@ export class Pet {
     this.breed = breed;
     this.kind = kind;
   }
+
 }
