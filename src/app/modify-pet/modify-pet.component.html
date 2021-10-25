@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="pet != undefined">
   <form>
     <div class="mb-3">
       <label class="form-label" for="name">Name</label>
@@ -20,7 +20,7 @@
     <div class="mb-3">
       <label class="form-label" for="kind">Kind</label>
       <select class="form-select" id="kind" [(ngModel)]="pet.kind" required>
-        <option *ngFor="let kind of kinds" [value]="kind.enumValue">{{kind.niceName}}</option>
+        <option [selected]="kind.enumValue === pet.kind" *ngFor="let kind of kinds" [value]="kind.enumValue">{{kind.niceName}}</option>
       </select>
     </div>
     <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>

@@ -3,6 +3,7 @@ import {HomeComponent} from "./home/home.component";
 import {PetComponent} from "./pet/pet.component";
 import {PetAddComponent} from "./pet-add/pet-add.component";
 import {ListPetsComponent} from "./list-pets/list-pets.component";
+import {ModifyPetComponent} from "./modify-pet/modify-pet.component";
 
 export const routerConfig: Routes = [
   {
@@ -16,6 +17,10 @@ export const routerConfig: Routes = [
   {
     path: 'pets/:id',
     component: PetComponent
+  },
+  {
+    path: 'pets/:id/edit',
+    component: ModifyPetComponent
   },
   {
     path: 'pets',

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Pet} from "../shared/models/pet.model";
 import {PetService} from "../pet.service";
 
@@ -13,7 +13,7 @@ export class PetComponent implements OnInit, OnDestroy {
   pet?:Pet;
   sub:any;
 
-  constructor(private petService: PetService, private route: ActivatedRoute) { }
+  constructor(private petService: PetService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -29,4 +29,7 @@ export class PetComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  editPet(pet: Pet) {
+    this.router.navigate(["/pets", pet.id, "edit"])
+  }
 }

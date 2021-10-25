@@ -1,2 +1,3 @@
+<button class="btn btn-primary" *ngIf="pet != undefined" (click)="editPet(pet)">Edit</button>
 <p>{{pet?.name}}</p>
 <img *ngIf="pet?.image" src="{{pet?.image}}" class="img-fluid">
